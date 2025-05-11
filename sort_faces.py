@@ -14,8 +14,8 @@ print("PyTorch Version:", torch.__version__)
 
 # Define paths (modify these as needed for your environment)
 Data = "data_src"  # Change to "data_dst" if needed
-image_folder = f'workspace/{Data}/aligned'  # Adjust path for your setup
-output_folder = 'clustered_faces'
+image_folder = f'workspace/{Data}/aligned'  # Input path for aligned images
+output_folder = f'workspace/{Data}/clustered_faces'  # Output path inside data_* folder
 
 # Create output folder
 if not os.path.exists(output_folder):
@@ -68,7 +68,7 @@ if len(embeddings) == 0:
     raise ValueError("No valid images processed. Check image formats and paths.")
 
 # Compute distance matrix using cosine distance
-dist_mat = squareform(pdist(embeddings, metric='cosineKILL
+dist_mat = squareform(pdist(embeddings, metric='cosine'))
 
 # Visualize raw distance matrix
 N = len(embeddings)
